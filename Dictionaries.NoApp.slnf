@@ -1,0 +1,11 @@
+{
+  "solution": {
+    "path": "Dictionaries.sln",
+    "projects": [
+      "src\\Dictionaries.Core\\Dictionaries.Core.csproj",
+      "src\\Dictionaries.Storage\\Dictionaries.Storage.csproj",
+      "src\\Dictionaries.Export\\Dictionaries.Export.csproj",
+      "tests\\Dictionaries.Tests\\Dictionaries.Tests.csproj"
+    ]
+  }
+}
