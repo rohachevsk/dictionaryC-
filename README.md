@@ -27,9 +27,15 @@ Dictionaries.sln
 Для застосунку MAUI потрібна робоча навантаження MAUI
 (Visual Studio Installer → «Розробка застосунків .NET MAUI» або `dotnet workload install maui`):
 
+Збірка і запуск застосунку для Windows (не потрібен Android SDK):
+
 ```
-dotnet build Dictionaries.sln
+dotnet build src/Dictionaries.App/Dictionaries.App.csproj -f net10.0-windows10.0.19041.0
+dotnet run --project src/Dictionaries.App/Dictionaries.App.csproj -f net10.0-windows10.0.19041.0
 ```
+
+Збірка всього `Dictionaries.sln` без `-f` збирає ще й Android, iOS і Mac Catalyst,
+тому для неї потрібен Android SDK. Для роботи над проєктом це не обов'язково.
 
 Бібліотеки і тести без MAUI (наприклад, для роботи над Storage / Export / тестами):
 
