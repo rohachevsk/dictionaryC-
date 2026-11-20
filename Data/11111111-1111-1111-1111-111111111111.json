@@ -1,0 +1,249 @@
+{
+  "Id": "11111111-1111-1111-1111-111111111111",
+  "Name": "Англо-український словник",
+  "SourceLanguage": "Англійська",
+  "TargetLanguage": "Українська",
+  "Words": [
+    {
+      "Word": "apple",
+      "Translations": [
+        "яблуко",
+        "яблуня"
+      ]
+    },
+    {
+      "Word": "run",
+      "Translations": [
+        "бігти",
+        "керувати",
+        "запускати"
+      ]
+    },
+    {
+      "Word": "book",
+      "Translations": [
+        "книга",
+        "бронювати"
+      ]
+    },
+    {
+      "Word": "water",
+      "Translations": [
+        "вода"
+      ]
+    },
+    {
+      "Word": "house",
+      "Translations": [
+        "будинок",
+        "дім"
+      ]
+    },
+    {
+      "Word": "sun",
+      "Translations": [
+        "сонце"
+      ]
+    },
+    {
+      "Word": "sky",
+      "Translations": [
+        "небо"
+      ]
+    },
+    {
+      "Word": "sea",
+      "Translations": [
+        "море"
+      ]
+    },
+    {
+      "Word": "tree",
+      "Translations": [
+        "дерево"
+      ]
+    },
+    {
+      "Word": "light",
+      "Translations": [
+        "світло",
+        "легкий",
+        "освітлювати"
+      ]
+    },
+    {
+      "Word": "time",
+      "Translations": [
+        "час",
+        "раз"
+      ]
+    },
+    {
+      "Word": "work",
+      "Translations": [
+        "робота",
+        "працювати"
+      ]
+    },
+    {
+      "Word": "play",
+      "Translations": [
+        "грати",
+        "гра",
+        "вистава"
+      ]
+    },
+    {
+      "Word": "open",
+      "Translations": [
+        "відкривати",
+        "відкритий"
+      ]
+    },
+    {
+      "Word": "close",
+      "Translations": [
+        "закривати",
+        "близький"
+      ]
+    },
+    {
+      "Word": "word",
+      "Translations": [
+        "слово"
+      ]
+    },
+    {
+      "Word": "friend",
+      "Translations": [
+        "друг",
+        "приятель"
+      ]
+    },
+    {
+      "Word": "city",
+      "Translations": [
+        "місто"
+      ]
+    },
+    {
+      "Word": "way",
+      "Translations": [
+        "шлях",
+        "спосіб",
+        "напрямок"
+      ]
+    },
+    {
+      "Word": "hand",
+      "Translations": [
+        "рука",
+        "кисть"
+      ]
+    },
+    {
+      "Word": "day",
+      "Translations": [
+        "день"
+      ]
+    },
+    {
+      "Word": "night",
+      "Translations": [
+        "ніч"
+      ]
+    },
+    {
+      "Word": "fire",
+      "Translations": [
+        "вогонь",
+        "звільняти",
+        "стріляти"
+      ]
+    },
+    {
+      "Word": "wind",
+      "Translations": [
+        "вітер",
+        "заводити"
+      ]
+    },
+    {
+      "Word": "stone",
+      "Translations": [
+        "камінь"
+      ]
+    },
+    {
+      "Word": "path",
+      "Translations": [
+        "стежка",
+        "шлях"
+      ]
+    },
+    {
+      "Word": "voice",
+      "Translations": [
+        "голос"
+      ]
+    },
+    {
+      "Word": "thought",
+      "Translations": [
+        "думка"
+      ]
+    },
+    {
+      "Word": "change",
+      "Translations": [
+        "зміна",
+        "змінювати",
+        "решта"
+      ]
+    },
+    {
+      "Word": "point",
+      "Translations": [
+        "точка",
+        "пункт",
+        "вказувати"
+      ]
+    },
+    {
+      "Word": "order",
+      "Translations": [
+        "порядок",
+        "замовлення",
+        "наказ"
+      ]
+    },
+    {
+      "Word": "place",
+      "Translations": [
+        "місце",
+        "розміщувати"
+      ]
+    },
+    {
+      "Word": "sound",
+      "Translations": [
+        "звук",
+        "звучати"
+      ]
+    },
+    {
+      "Word": "key",
+      "Translations": [
+        "ключ",
+        "клавіша"
+      ]
+    },
+    {
+      "Word": "story",
+      "Translations": [
+        "історія",
+        "оповідання"
+      ]
+    }
+  ]
+}
