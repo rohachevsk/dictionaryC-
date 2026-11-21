@@ -1,5 +1,4 @@
 ﻿using Dictionaries.App.Views;
-using Dictionaries.Core;
 using Dictionaries.Core.Interfaces;
 using Dictionaries.Core.Repositories;
 using Dictionaries.Core.Services;
@@ -29,6 +28,8 @@ public static class MauiProgram
 
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<DictionariesPage>();
+        builder.Services.AddTransient<CreateDictionaryPage>();
+        builder.Services.AddTransient<DictionaryDetailsPage>();
 
         return builder.Build();
     }

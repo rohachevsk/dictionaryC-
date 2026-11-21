@@ -1,0 +1,118 @@
+warning: in the working copy of 'src/Dictionaries.App/Dictionaries.App.csproj', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/src/Dictionaries.App/Dictionaries.App.csproj b/src/Dictionaries.App/Dictionaries.App.csproj[m
+[1mindex e91e4a3..31142b4 100644[m
+[1m--- a/src/Dictionaries.App/Dictionaries.App.csproj[m
+[1m+++ b/src/Dictionaries.App/Dictionaries.App.csproj[m
+[36m@@ -1,79 +1,34 @@[m
+[31m-<Project Sdk="Microsoft.NET.Sdk">[m
+[31m-[m
+[31m-	<PropertyGroup>[m
+[31m-		<TargetFrameworks>net10.0-android</TargetFrameworks>[m
+[31m-		<TargetFrameworks Condition="!$([MSBuild]::IsOSPlatform('linux'))">$(TargetFrameworks);net10.0-ios;net10.0-maccatalyst</TargetFrameworks>[m
+[31m-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>[m
+[31m-[m
+[31m-		<!-- Note for MacCatalyst:[m
+[31m-		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.[m
+[31m-		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.[m
+[31m-		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;[m
+[31m-		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->[m
+[31m-		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->[m
+[31m-[m
+[31m-		<OutputType>Exe</OutputType>[m
+[31m-		<RootNamespace>Dictionaries.App</RootNamespace>[m
+[31m-		<UseMaui>true</UseMaui>[m
+[31m-		<SingleProject>true</SingleProject>[m
+[31m-		<ImplicitUsings>enable</ImplicitUsings>[m
+[31m-		<Nullable>enable</Nullable>[m
+[31m-[m
+[31m-		<!-- Enable XAML source generation for faster build times and improved performance.[m
+[31m-		     This generates C# code from XAML at compile time instead of runtime inflation.[m
+[31m-		     To disable, remove this line.[m
+[31m-		     For individual files, you can override by setting Inflator metadata:[m
+[31m-		       <MauiXaml Update="MyPage.xaml" Inflator="Default" /> (reverts to defaults: Runtime for Debug, XamlC for Release)[m
+[31m-		       <MauiXaml Update="MyPage.xaml" Inflator="Runtime" /> (force runtime inflation) -->[m
+[31m-		<MauiXamlInflator>SourceGen</MauiXamlInflator>[m
+[31m-[m
+[31m-		<!-- Display name -->[m
+[31m-		<ApplicationTitle>Словники</ApplicationTitle>[m
+[31m-[m
+[31m-		<!-- App Identifier -->[m
+[31m-		<ApplicationId>com.companyname.dictionaries.app</ApplicationId>[m
+[31m-[m
+[31m-		<!-- Versions -->[m
+[31m-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>[m
+[31m-		<ApplicationVersion>1</ApplicationVersion>[m
+[31m-[m
+[31m-		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->[m
+[31m-		<WindowsPackageType>None</WindowsPackageType>[m
+[31m-[m
+[31m-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>[m
+[31m-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">17.0</SupportedOSPlatformVersion>[m
+[31m-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>[m
+[31m-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>[m
+[31m-		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>[m
+[31m-	</PropertyGroup>[m
+[31m-[m
+[31m-	<ItemGroup>[m
+[31m-		<!-- App Icon -->[m
+[31m-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />[m
+[31m-[m
+[31m-		<!-- Splash Screen -->[m
+[31m-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />[m
+[31m-[m
+[31m-		<!-- Images -->[m
+[31m-		<MauiImage Include="Resources\Images\*" />[m
+[31m-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />[m
+[31m-		[m
+[31m-		<!-- Custom Fonts -->[m
+[31m-		<MauiFont Include="Resources\Fonts\*" />[m
+[31m-[m
+[31m-		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->[m
+[31m-		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />[m
+[31m-	</ItemGroup>[m
+[31m-[m
+[31m-	<ItemGroup>[m
+[31m-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />[m
+[31m-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />[m
+[31m-	</ItemGroup>[m
+[31m-[m
+[31m-	<ItemGroup>[m
+[31m-		<ProjectReference Include="..\Dictionaries.Core\Dictionaries.Core.csproj" />[m
+[31m-		<ProjectReference Include="..\Dictionaries.Storage\Dictionaries.Storage.csproj" />[m
+[31m-		<ProjectReference Include="..\Dictionaries.Export\Dictionaries.Export.csproj" />[m
+[31m-	</ItemGroup>[m
+[31m-[m
+[32m+[m[32m﻿<Project Sdk="Microsoft.NET.Sdk">[m
+[32m+[m[32m<PropertyGroup>[m
+[32m+[m[32m<TargetFrameworks>net10.0-windows10.0.19041.0</TargetFrameworks>[m
+[32m+[m[32m<OutputType>Exe</OutputType>[m
+[32m+[m[32m<RootNamespace>Dictionaries.App</RootNamespace>[m
+[32m+[m[32m<UseMaui>true</UseMaui>[m
+[32m+[m[32m<SingleProject>true</SingleProject>[m
+[32m+[m[32m<ImplicitUsings>enable</ImplicitUsings>[m
+[32m+[m[32m<Nullable>enable</Nullable>[m
+[32m+[m[32m<ApplicationTitle>Dictionaries.App</ApplicationTitle>[m
+[32m+[m[32m<ApplicationId>com.companyname.dictionaries.app</ApplicationId>[m
+[32m+[m[32m<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>[m
+[32m+[m[32m<ApplicationVersion>1</ApplicationVersion>[m
+[32m+[m[32m<WindowsPackageType>None</WindowsPackageType>[m
+[32m+[m[32m<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>[m
+[32m+[m[32m<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>[m
+[32m+[m[32m</PropertyGroup>[m
+[32m+[m[32m<ItemGroup>[m
+[32m+[m[32m<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />[m
+[32m+[m[32m<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />[m
+[32m+[m[32m<MauiImage Include="Resources\Images\*" />[m
+[32m+[m[32m<MauiFont Include="Resources\Fonts\*" />[m
+[32m+[m[32m<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />[m
+[32m+[m[32m</ItemGroup>[m
+[32m+[m[32m<ItemGroup>[m
+[32m+[m[32m<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />[m
+[32m+[m[32m<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />[m
+[32m+[m[32m</ItemGroup>[m
+[32m+[m[32m<ItemGroup>[m
+[32m+[m[32m<ProjectReference Include="..\Dictionaries.Core\Dictionaries.Core.csproj" />[m
+[32m+[m[32m<ProjectReference Include="..\Dictionaries.Storage\Dictionaries.Storage.csproj" />[m
+[32m+[m[32m<ProjectReference Include="..\Dictionaries.Export\Dictionaries.Export.csproj" />[m
+[32m+[m[32m</ItemGroup>[m
+ </Project>[m
