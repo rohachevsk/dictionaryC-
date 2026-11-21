@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dictionaries.App.Views.DictionariesPage"
+             Title="Мої словники">
+
+    <VerticalStackLayout Padding="24" Spacing="16" VerticalOptions="Center">
+        <Label Text="Тут буде список словників (Завдання #7)"
+               FontSize="20"
+               HorizontalOptions="Center" />
+
+        <Button Text="← Назад до головного меню"
+                Clicked="OnBackClicked"
+                HorizontalOptions="Center"
+                WidthRequest="260" />
+    </VerticalStackLayout>
+</ContentPage>
