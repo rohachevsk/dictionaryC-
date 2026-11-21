@@ -1,23 +1,32 @@
-﻿namespace Dictionaries.App;
+﻿using Dictionaries.App.Views;
+using Dictionaries.Core.Interfaces;
+
+namespace Dictionaries.App;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    private readonly IDictionaryService _dictionaryService;
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+    public MainPage(IDictionaryService dictionaryService)
+    {
+        InitializeComponent();
+        _dictionaryService = dictionaryService;
+    }
 
-	private void OnCounterClicked(object? sender, EventArgs e)
-	{
-		count++;
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        int count = _dictionaryService.GetDictionaries().Count;
+        StatsLabel.Text = $"Доступно словників: {count}";
+    }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+    private async void OnOpenDictionariesClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(DictionariesPage));
+    }
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    private void OnExitClicked(object sender, EventArgs e)
+    {
+        Application.Current?.Quit();
+    }
 }
