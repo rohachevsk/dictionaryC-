@@ -8,5 +8,7 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
         Routing.RegisterRoute(nameof(DictionariesPage), typeof(DictionariesPage));
+        Routing.RegisterRoute(nameof(CreateDictionaryPage), typeof(CreateDictionaryPage));
+        Routing.RegisterRoute(nameof(DictionaryDetailsPage), typeof(DictionaryDetailsPage));
     }
 }

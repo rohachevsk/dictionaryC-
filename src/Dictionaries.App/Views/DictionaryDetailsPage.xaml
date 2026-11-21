@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dictionaries.App.Views.DictionaryDetailsPage"
+             Title="Словник">
+
+    <VerticalStackLayout Padding="24" Spacing="16" VerticalOptions="Center" HorizontalOptions="Center">
+        <Label x:Name="DictionaryTitleLabel" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" />
+        <Label x:Name="LanguagesLabel" FontSize="16" TextColor="Gray" HorizontalOptions="Center" />
+        <Label Text="Екран слів та пошуку буде додано у завданні #8." FontSize="15" HorizontalOptions="Center" />
+        <Button Text="← Назад до списку словників"
+                Clicked="OnBackClicked"
+                HeightRequest="44"
+                CornerRadius="10"
+                Margin="0,12,0,0" />
+    </VerticalStackLayout>
+</ContentPage>
