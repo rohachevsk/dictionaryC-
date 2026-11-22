@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dictionaries.App.Views.DictionaryDetailsPage"
+             Title="Словник">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="24" RowSpacing="14">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,320" ColumnSpacing="16">
+            <VerticalStackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
+                <Label x:Name="DictionaryTitleLabel" FontSize="24" FontAttributes="Bold" />
+                <Label x:Name="LanguagesLabel" FontSize="14" TextColor="Gray" />
+            </VerticalStackLayout>
+
+            <SearchBar Grid.Column="1"
+                       x:Name="WordSearchBar"
+                       Placeholder="Пошук слова або перекладу..."
+                       TextChanged="OnSearchTextChanged"
+                       SearchButtonPressed="OnSearchButtonPressed"
+                       VerticalOptions="Center" />
+        </Grid>
+
+        <Border Grid.Row="1" Padding="14" StrokeShape="RoundRectangle 12" StrokeThickness="1">
+            <VerticalStackLayout Spacing="8">
+                <Grid ColumnDefinitions="*,2*,Auto" ColumnSpacing="10">
+                    <Entry Grid.Column="0"
+                           x:Name="NewWordEntry"
+                           Placeholder="Нове слово (напр. apple)"
+                           TextChanged="OnNewWordInputChanged" />
+                    <Entry Grid.Column="1"
+                           x:Name="NewTranslationsEntry"
+                           Placeholder="Переклади через кому (напр. яблуко, яблуня)"
+                           TextChanged="OnNewWordInputChanged" />
+                    <Button Grid.Column="2"
+                            Text="+ Додати слово"
+                            Clicked="OnAddWordClicked"
+                            HeightRequest="42"
+                            Padding="16,0"
+                            CornerRadius="8"
+                            FontAttributes="Bold" />
+                </Grid>
+
+                <Label x:Name="ErrorLabel"
+                       TextColor="#C62828"
+                       FontSize="13"
+                       IsVisible="False" />
+            </VerticalStackLayout>
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Label x:Name="EmptyWordsLabel"
+                   Text="Слів поки немає. Додайте перше слово вище."
+                   FontSize="16"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="False" />
+
+            <CollectionView x:Name="WordsCollection" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="8" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="14" StrokeShape="RoundRectangle 10" StrokeThickness="1">
+                            <Grid ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="8">
+                                <VerticalStackLayout Grid.Column="0" Spacing="3" VerticalOptions="Center">
+                                    <Label Text="{Binding Word}" FontSize="17" FontAttributes="Bold" />
+                                    <Label Text="{Binding TranslationsText}" FontSize="14" TextColor="Gray" />
+                                </VerticalStackLayout>
+
+                                <Button Grid.Column="1"
+                                        Text="+ Переклад"
+                                        Clicked="OnAddTranslationClicked"
+                                        CommandParameter="{Binding Word}"
+                                        HeightRequest="38"
+                                        Padding="12,0"
+                                        CornerRadius="8" />
+
+                                <Button Grid.Column="2"
+                                        Text="Редагувати"
+                                        Clicked="OnEditWordClicked"
+                                        CommandParameter="{Binding Word}"
+                                        HeightRequest="38"
+                                        Padding="12,0"
+                                        CornerRadius="8" />
+
+                                <Button Grid.Column="3"
+                                        Text="Видалити"
+                                        Clicked="OnDeleteWordClicked"
+                                        CommandParameter="{Binding Word}"
+                                        BackgroundColor="#C62828"
+                                        TextColor="White"
+                                        HeightRequest="38"
+                                        Padding="12,0"
+                                        CornerRadius="8" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <Button Grid.Row="3"
+                Text="← Назад до списку словників"
+                Clicked="OnBackClicked"
+                HeightRequest="44"
+                CornerRadius="10" />
+    </Grid>
+</ContentPage>

@@ -1,24 +1,36 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Dictionaries.App.Views;
+using Dictionaries.Core.Interfaces;
+using Dictionaries.Core.Repositories;
+using Dictionaries.Core.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Dictionaries.App;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
-	}
+        builder.Services.AddSingleton<IDictionaryRepository, InMemoryDictionaryRepository>();
+        builder.Services.AddSingleton<IDictionaryService, DictionaryService>();
+
+        builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<DictionariesPage>();
+        builder.Services.AddTransient<CreateDictionaryPage>();
+        builder.Services.AddTransient<DictionaryDetailsPage>();
+
+        return builder.Build();
+    }
 }
