@@ -259,6 +259,28 @@ public partial class DictionaryDetailsPage : ContentPage
         }
     }
 
+    private async void OnExportWordClicked(object sender, EventArgs e)
+    {
+        if (sender is not Button { CommandParameter: string word })
+            return;
+
+        try
+        {
+            var entry = _dictionaryService.FindWord(_dictionaryId, word);
+            if (entry is null)
+            {
+                await DisplayAlert("Помилка", "Слово не знайдено.", "ОК");
+                return;
+            }
+
+            await Navigation.PushAsync(new ExportPage(entry));
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Помилка", $"Не вдалося відкрити вікно експорту: {ex.Message}", "ОК");
+        }
+    }
+
     private async void OnDeleteWordClicked(object sender, EventArgs e)
     {
         if (sender is not Button { CommandParameter: string word })

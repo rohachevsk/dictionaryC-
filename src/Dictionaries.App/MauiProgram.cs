@@ -1,7 +1,7 @@
 ﻿using Dictionaries.App.Views;
 using Dictionaries.Core.Interfaces;
-using Dictionaries.Core.Repositories;
 using Dictionaries.Core.Services;
+using Dictionaries.Storage;
 using Microsoft.Extensions.Logging;
 
 namespace Dictionaries.App;
@@ -23,7 +23,8 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
-        builder.Services.AddSingleton<IDictionaryRepository, InMemoryDictionaryRepository>();
+        string dataFolder = Path.Combine(FileSystem.AppDataDirectory, "Data");
+        builder.Services.AddSingleton<IDictionaryRepository>(_ => new JsonDictionaryRepository(dataFolder));
         builder.Services.AddSingleton<IDictionaryService, DictionaryService>();
 
         builder.Services.AddTransient<MainPage>();
