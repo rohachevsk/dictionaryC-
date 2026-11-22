@@ -19,6 +19,10 @@ public partial class DictionaryDetailsPage : ContentPage
                 _dictionaryId = parsed;
                 RefreshPage();
             }
+            else
+            {
+                DictionaryTitleLabel.Text = "Некоректний ідентифікатор словника.";
+            }
         }
     }
 
@@ -26,6 +30,12 @@ public partial class DictionaryDetailsPage : ContentPage
     {
         InitializeComponent();
         _dictionaryService = dictionaryService;
+    }
+
+    private void OnNewWordInputChanged(object sender, TextChangedEventArgs e)
+    {
+        if (ErrorLabel.IsVisible)
+            ErrorLabel.IsVisible = false;
     }
 
     private void RefreshPage()
@@ -41,42 +51,57 @@ public partial class DictionaryDetailsPage : ContentPage
         catch (DictionaryException ex)
         {
             DictionaryTitleLabel.Text = ex.Message;
+            WordsCollection.ItemsSource = null;
+        }
+        catch (Exception)
+        {
+            DictionaryTitleLabel.Text = "Не вдалося завантажити дані словника.";
+            WordsCollection.ItemsSource = null;
         }
     }
 
     private void ApplySearchFilter(string? query)
     {
-        var allWords = _dictionaryService.GetWords(_dictionaryId);
-        var trimmed = query?.Trim() ?? string.Empty;
-
-        IEnumerable<WordEntry> filtered = allWords;
-        if (!string.IsNullOrEmpty(trimmed))
+        try
         {
-            var exactMatch = _dictionaryService.FindWord(_dictionaryId, trimmed);
-            filtered = allWords.Where(w =>
-                (exactMatch != null && string.Equals(w.Word, exactMatch.Word, StringComparison.OrdinalIgnoreCase)) ||
-                w.Word.Contains(trimmed, StringComparison.OrdinalIgnoreCase) ||
-                w.Translations.Any(t => t.Contains(trimmed, StringComparison.OrdinalIgnoreCase)));
+            var allWords = _dictionaryService.GetWords(_dictionaryId);
+            var trimmed = query?.Trim() ?? string.Empty;
+
+            IEnumerable<WordEntry> filtered = allWords;
+            if (!string.IsNullOrEmpty(trimmed))
+            {
+                var exactMatch = _dictionaryService.FindWord(_dictionaryId, trimmed);
+                filtered = allWords.Where(w =>
+                    (exactMatch != null && string.Equals(w.Word, exactMatch.Word, StringComparison.OrdinalIgnoreCase)) ||
+                    w.Word.Contains(trimmed, StringComparison.OrdinalIgnoreCase) ||
+                    w.Translations.Any(t => t.Contains(trimmed, StringComparison.OrdinalIgnoreCase)));
+            }
+
+            var items = filtered.Select(w => new WordItemViewModel
+            {
+                Word = w.Word,
+                TranslationsText = string.Join(", ", w.Translations)
+            }).ToList();
+
+            WordsCollection.ItemsSource = items;
+
+            if (items.Count == 0)
+            {
+                EmptyWordsLabel.Text = string.IsNullOrEmpty(trimmed)
+                    ? "Слів поки немає. Додайте перше слово вище."
+                    : $"За запитом «{trimmed}» нічого не знайдено.";
+                EmptyWordsLabel.IsVisible = true;
+            }
+            else
+            {
+                EmptyWordsLabel.IsVisible = false;
+            }
         }
-
-        var items = filtered.Select(w => new WordItemViewModel
+        catch (DictionaryException ex)
         {
-            Word = w.Word,
-            TranslationsText = string.Join(", ", w.Translations)
-        }).ToList();
-
-        WordsCollection.ItemsSource = items;
-
-        if (items.Count == 0)
-        {
-            EmptyWordsLabel.Text = string.IsNullOrEmpty(trimmed)
-                ? "Слів поки немає. Додайте перше слово вище."
-                : $"За запитом «{trimmed}» нічого не знайдено.";
+            WordsCollection.ItemsSource = null;
+            EmptyWordsLabel.Text = ex.Message;
             EmptyWordsLabel.IsVisible = true;
-        }
-        else
-        {
-            EmptyWordsLabel.IsVisible = false;
         }
     }
 
@@ -111,6 +136,11 @@ public partial class DictionaryDetailsPage : ContentPage
             ErrorLabel.Text = ex.Message;
             ErrorLabel.IsVisible = true;
         }
+        catch (Exception)
+        {
+            ErrorLabel.Text = "Не вдалося додати слово. Перевірте введені дані.";
+            ErrorLabel.IsVisible = true;
+        }
     }
 
     private async void OnAddTranslationClicked(object sender, EventArgs e)
@@ -136,6 +166,10 @@ public partial class DictionaryDetailsPage : ContentPage
         catch (DictionaryException ex)
         {
             await DisplayAlert("Помилка", ex.Message, "ОК");
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Помилка", "Не вдалося додати переклад.", "ОК");
         }
     }
 
@@ -219,6 +253,10 @@ public partial class DictionaryDetailsPage : ContentPage
         {
             await DisplayAlert("Помилка", ex.Message, "ОК");
         }
+        catch (Exception)
+        {
+            await DisplayAlert("Помилка", "Не вдалося зберегти зміни.", "ОК");
+        }
     }
 
     private async void OnDeleteWordClicked(object sender, EventArgs e)
@@ -243,6 +281,10 @@ public partial class DictionaryDetailsPage : ContentPage
         catch (DictionaryException ex)
         {
             await DisplayAlert("Помилка", ex.Message, "ОК");
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Помилка", "Не вдалося видалити слово.", "ОК");
         }
     }
 

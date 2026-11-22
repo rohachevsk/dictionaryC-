@@ -9,17 +9,23 @@
 
         <VerticalStackLayout Spacing="6">
             <Label Text="Назва словника" FontSize="14" />
-            <Entry x:Name="NameEntry" Placeholder="Наприклад: Англо-український" />
+            <Entry x:Name="NameEntry"
+                   Placeholder="Наприклад: Англо-український"
+                   TextChanged="OnInputTextChanged" />
         </VerticalStackLayout>
 
         <VerticalStackLayout Spacing="6">
             <Label Text="Мова оригіналу (з якої перекладаємо)" FontSize="14" />
-            <Entry x:Name="SourceLangEntry" Placeholder="Наприклад: Англійська" />
+            <Entry x:Name="SourceLangEntry"
+                   Placeholder="Наприклад: Англійська"
+                   TextChanged="OnInputTextChanged" />
         </VerticalStackLayout>
 
         <VerticalStackLayout Spacing="6">
             <Label Text="Мова перекладу (на яку перекладаємо)" FontSize="14" />
-            <Entry x:Name="TargetLangEntry" Placeholder="Наприклад: Українська" />
+            <Entry x:Name="TargetLangEntry"
+                   Placeholder="Наприклад: Українська"
+                   TextChanged="OnInputTextChanged" />
         </VerticalStackLayout>
 
         <Label x:Name="ErrorLabel"

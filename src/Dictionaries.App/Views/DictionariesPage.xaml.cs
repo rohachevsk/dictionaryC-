@@ -13,25 +13,38 @@ public partial class DictionariesPage : ContentPage
         _dictionaryService = dictionaryService;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        LoadDictionaries();
+        await LoadDictionariesAsync();
     }
 
-    private void LoadDictionaries()
+    private async Task LoadDictionariesAsync()
     {
-        var items = _dictionaryService.GetDictionaries()
-            .Select(d => new DictionaryItemViewModel
-            {
-                Id = d.Id,
-                Name = d.Name,
-                Subtitle = $"{d.SourceLanguage} → {d.TargetLanguage} • Слів: {d.Words.Count}"
-            })
-            .ToList();
+        try
+        {
+            var items = _dictionaryService.GetDictionaries()
+                .Select(d => new DictionaryItemViewModel
+                {
+                    Id = d.Id,
+                    Name = d.Name,
+                    Subtitle = $"{d.SourceLanguage} → {d.TargetLanguage} • Слів: {d.Words.Count}"
+                })
+                .ToList();
 
-        DictionariesCollection.ItemsSource = items;
-        EmptyLabel.IsVisible = items.Count == 0;
+            DictionariesCollection.ItemsSource = items;
+            EmptyLabel.Text = "Словників поки немає. Натисніть «+ Створити словник», щоб додати перший.";
+            EmptyLabel.IsVisible = items.Count == 0;
+        }
+        catch (DictionaryException ex)
+        {
+            EmptyLabel.Text = ex.Message;
+            EmptyLabel.IsVisible = true;
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Помилка", "Не вдалося завантажити список словників.", "ОК");
+        }
     }
 
     private async void OnCreateDictionaryClicked(object sender, EventArgs e)
@@ -65,11 +78,15 @@ public partial class DictionariesPage : ContentPage
                 return;
 
             _dictionaryService.DeleteDictionary(id);
-            LoadDictionaries();
+            await LoadDictionariesAsync();
         }
         catch (DictionaryException ex)
         {
             await DisplayAlert("Помилка", ex.Message, "ОК");
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Помилка", "Не вдалося видалити словник.", "ОК");
         }
     }
 

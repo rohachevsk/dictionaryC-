@@ -6,7 +6,6 @@
 
     <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="24" RowSpacing="14">
 
-        <!-- Шапка словаря и поиск -->
         <Grid Grid.Row="0" ColumnDefinitions="*,320" ColumnSpacing="16">
             <VerticalStackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
                 <Label x:Name="DictionaryTitleLabel" FontSize="24" FontAttributes="Bold" />
@@ -21,16 +20,17 @@
                        VerticalOptions="Center" />
         </Grid>
 
-        <!-- Форма добавления нового слова -->
         <Border Grid.Row="1" Padding="14" StrokeShape="RoundRectangle 12" StrokeThickness="1">
             <VerticalStackLayout Spacing="8">
                 <Grid ColumnDefinitions="*,2*,Auto" ColumnSpacing="10">
                     <Entry Grid.Column="0"
                            x:Name="NewWordEntry"
-                           Placeholder="Нове слово (напр. apple)" />
+                           Placeholder="Нове слово (напр. apple)"
+                           TextChanged="OnNewWordInputChanged" />
                     <Entry Grid.Column="1"
                            x:Name="NewTranslationsEntry"
-                           Placeholder="Переклади через кому (напр. яблуко, яблуня)" />
+                           Placeholder="Переклади через кому (напр. яблуко, яблуня)"
+                           TextChanged="OnNewWordInputChanged" />
                     <Button Grid.Column="2"
                             Text="+ Додати слово"
                             Clicked="OnAddWordClicked"
@@ -47,7 +47,6 @@
             </VerticalStackLayout>
         </Border>
 
-        <!-- Список слов -->
         <Grid Grid.Row="2">
             <Label x:Name="EmptyWordsLabel"
                    Text="Слів поки немає. Додайте перше слово вище."
@@ -103,7 +102,6 @@
             </CollectionView>
         </Grid>
 
-        <!-- Кнопка назад -->
         <Button Grid.Row="3"
                 Text="← Назад до списку словників"
                 Clicked="OnBackClicked"

@@ -13,6 +13,12 @@ public partial class CreateDictionaryPage : ContentPage
         _dictionaryService = dictionaryService;
     }
 
+    private void OnInputTextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (ErrorLabel.IsVisible)
+            ErrorLabel.IsVisible = false;
+    }
+
     private async void OnSaveClicked(object sender, EventArgs e)
     {
         ErrorLabel.IsVisible = false;
@@ -29,6 +35,11 @@ public partial class CreateDictionaryPage : ContentPage
         catch (DictionaryException ex)
         {
             ErrorLabel.Text = ex.Message;
+            ErrorLabel.IsVisible = true;
+        }
+        catch (Exception)
+        {
+            ErrorLabel.Text = "Не вдалося створити словник. Перевірте введені дані.";
             ErrorLabel.IsVisible = true;
         }
     }
