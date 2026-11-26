@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dictionaries.App.Views.DictionariesPage"
+             Title="Мої словники">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="24" RowSpacing="16">
+
+        <HorizontalStackLayout Grid.Row="0" Spacing="12">
+            <Button Text="+ Створити словник"
+                    Clicked="OnCreateDictionaryClicked"
+                    HeightRequest="44"
+                    Padding="18,0"
+                    CornerRadius="10"
+                    FontAttributes="Bold" />
+        </HorizontalStackLayout>
+
+        <Grid Grid.Row="1">
+            <Label x:Name="EmptyLabel"
+                   Text="Словників поки немає. Натисніть «+ Створити словник», щоб додати перший."
+                   FontSize="16"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   IsVisible="False" />
+
+            <CollectionView x:Name="DictionariesCollection" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="16" StrokeShape="RoundRectangle 12" StrokeThickness="1">
+                            <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+                                <VerticalStackLayout Grid.Column="0" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                                    <Label Text="{Binding Subtitle}" FontSize="14" TextColor="Gray" />
+                                </VerticalStackLayout>
+
+                                <Button Grid.Column="1"
+                                        Text="Відкрити"
+                                        Clicked="OnOpenDictionaryClicked"
+                                        CommandParameter="{Binding Id}"
+                                        HeightRequest="40"
+                                        Padding="14,0"
+                                        CornerRadius="8" />
+
+                                <Button Grid.Column="2"
+                                        Text="Видалити"
+                                        Clicked="OnDeleteDictionaryClicked"
+                                        CommandParameter="{Binding Id}"
+                                        BackgroundColor="#C62828"
+                                        TextColor="White"
+                                        HeightRequest="40"
+                                        Padding="14,0"
+                                        CornerRadius="8" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <Button Grid.Row="2"
+                Text="← Назад до головного меню"
+                Clicked="OnBackClicked"
+                HeightRequest="44"
+                CornerRadius="10" />
+    </Grid>
+</ContentPage>

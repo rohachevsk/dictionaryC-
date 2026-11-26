@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dictionaries.App.MainPage"
+             Title="Головне меню">
+
+    <VerticalStackLayout Padding="30" Spacing="18" VerticalOptions="Center" HorizontalOptions="Center">
+        <Label Text="Словники"
+               FontSize="32"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <Label x:Name="StatsLabel"
+               Text="Доступно словників: 0"
+               FontSize="14"
+               TextColor="Gray"
+               HorizontalOptions="Center"
+               Margin="0,0,0,12" />
+
+        <Button Text="Відкрити словники"
+                Clicked="OnOpenDictionariesClicked"
+                WidthRequest="260"
+                HeightRequest="48" />
+
+        <Button Text="Вихід із програми"
+                Clicked="OnExitClicked"
+                BackgroundColor="#D9534F"
+                TextColor="White"
+                WidthRequest="260"
+                HeightRequest="48" />
+    </VerticalStackLayout>
+</ContentPage>

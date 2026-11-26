@@ -1,0 +1,238 @@
+{
+  "Id": "22222222-2222-2222-2222-222222222222",
+  "Name": "Українсько-англійський словник",
+  "SourceLanguage": "Українська",
+  "TargetLanguage": "Англійська",
+  "Words": [
+    {
+      "Word": "яблуко",
+      "Translations": [
+        "apple"
+      ]
+    },
+    {
+      "Word": "бігти",
+      "Translations": [
+        "run",
+        "dash"
+      ]
+    },
+    {
+      "Word": "книга",
+      "Translations": [
+        "book"
+      ]
+    },
+    {
+      "Word": "вода",
+      "Translations": [
+        "water"
+      ]
+    },
+    {
+      "Word": "будинок",
+      "Translations": [
+        "house",
+        "building"
+      ]
+    },
+    {
+      "Word": "сонце",
+      "Translations": [
+        "sun"
+      ]
+    },
+    {
+      "Word": "небо",
+      "Translations": [
+        "sky"
+      ]
+    },
+    {
+      "Word": "море",
+      "Translations": [
+        "sea"
+      ]
+    },
+    {
+      "Word": "дерево",
+      "Translations": [
+        "tree"
+      ]
+    },
+    {
+      "Word": "світло",
+      "Translations": [
+        "light"
+      ]
+    },
+    {
+      "Word": "час",
+      "Translations": [
+        "time"
+      ]
+    },
+    {
+      "Word": "робота",
+      "Translations": [
+        "work",
+        "job"
+      ]
+    },
+    {
+      "Word": "грати",
+      "Translations": [
+        "play"
+      ]
+    },
+    {
+      "Word": "відкривати",
+      "Translations": [
+        "open"
+      ]
+    },
+    {
+      "Word": "закривати",
+      "Translations": [
+        "close",
+        "shut"
+      ]
+    },
+    {
+      "Word": "слово",
+      "Translations": [
+        "word"
+      ]
+    },
+    {
+      "Word": "друг",
+      "Translations": [
+        "friend",
+        "buddy"
+      ]
+    },
+    {
+      "Word": "місто",
+      "Translations": [
+        "city",
+        "town"
+      ]
+    },
+    {
+      "Word": "шлях",
+      "Translations": [
+        "way",
+        "path",
+        "route"
+      ]
+    },
+    {
+      "Word": "рука",
+      "Translations": [
+        "hand",
+        "arm"
+      ]
+    },
+    {
+      "Word": "день",
+      "Translations": [
+        "day"
+      ]
+    },
+    {
+      "Word": "ніч",
+      "Translations": [
+        "night"
+      ]
+    },
+    {
+      "Word": "вогонь",
+      "Translations": [
+        "fire",
+        "flame"
+      ]
+    },
+    {
+      "Word": "вітер",
+      "Translations": [
+        "wind",
+        "breeze"
+      ]
+    },
+    {
+      "Word": "камінь",
+      "Translations": [
+        "stone",
+        "rock"
+      ]
+    },
+    {
+      "Word": "стежка",
+      "Translations": [
+        "path",
+        "trail"
+      ]
+    },
+    {
+      "Word": "голос",
+      "Translations": [
+        "voice"
+      ]
+    },
+    {
+      "Word": "думка",
+      "Translations": [
+        "thought",
+        "idea"
+      ]
+    },
+    {
+      "Word": "зміна",
+      "Translations": [
+        "change",
+        "shift"
+      ]
+    },
+    {
+      "Word": "точка",
+      "Translations": [
+        "point",
+        "dot"
+      ]
+    },
+    {
+      "Word": "порядок",
+      "Translations": [
+        "order",
+        "arrangement"
+      ]
+    },
+    {
+      "Word": "місце",
+      "Translations": [
+        "place",
+        "spot",
+        "location"
+      ]
+    },
+    {
+      "Word": "звук",
+      "Translations": [
+        "sound"
+      ]
+    },
+    {
+      "Word": "ключ",
+      "Translations": [
+        "key"
+      ]
+    },
+    {
+      "Word": "історія",
+      "Translations": [
+        "story",
+        "history"
+      ]
+    }
+  ]
+}
